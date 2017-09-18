@@ -1,0 +1,56 @@
+<html>
+ <head>
+ <script src='/jquery.js'></script>
+ <style type="text/css">
+ .div1 { margin: 1em; padding: .2em 1em; border: 1px solid green; width: 50%; }
+ </style>
+ </head>
+
+ <script language="javascript">
+
+ </script>
+
+
+ <h1>Choose your favorite sport</h1>
+ <form id="form1" name="form1">
+ <div class="div1">
+ <p>Choose your favorite sport:</p>
+ <select id="sel1" name="sport">
+ <option value="0">Select One </option>
+ <option>Baseball</option>
+ <option>Football</option>
+ <option>Hockey</option>
+ <option>Basketball</option>
+ </select></div>
+
+ <div class="div1">
+ <p>Choose your favorite team:</p>
+ <select id="sel2" name="team"></select>
+</div>
+
+ <div class="div1">
+ <p>You chose:</p>
+ <span id="answer"></span>
+ </div>
+ </form>
+
+ <script language="javascript">
+
+ $('sel1').selectedIndex=0; // start off with "Select One"
+ $('#sel1').change (updateTeam); // update the team list
+ $('#sel2').change (showTeam); // display the team chosen
+
+
+ // Execute this function when a sport has been chosen.
+ function updateTeam() {
+
+ $('#sel2').load('/share/week15/sports-backend.php' ,{'s':$('#sel1').val()})
+
+ }
+
+ function showTeam() {
+ var result = $('#sel2').val();
+$('#answer').html(result);
+ }
+
+ </script>
